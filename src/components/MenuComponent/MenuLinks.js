@@ -7,9 +7,10 @@ import Link from "@material-ui/core/Link";
 import {Link as RouterLink} from "react-router-dom";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
-import InboxIcon from "@material-ui/icons/MoveToInbox";
+import InfoIcon from '@material-ui/icons/Info';
+import HomeIcon from '@material-ui/icons/Home';
 import ListItemText from "@material-ui/core/ListItemText";
-import AccessibleIcon from "@material-ui/icons/Accessible";
+import SearchSharpIcon from '@material-ui/icons/SearchSharp';
 import Drawer from "@material-ui/core/Drawer";
 import React from "react";
 import {useStyles} from "./stylesMenu";
@@ -44,13 +45,13 @@ export default function ({ handleDrawerClose, open }) {
         <List>
             <Link component={RouterLink} to="/">
                 <ListItem button key="main">
-                    <ListItemIcon><InboxIcon/></ListItemIcon>
+                    <ListItemIcon><HomeIcon/></ListItemIcon>
                     <ListItemText primary="Top new movies"/>
                 </ListItem>
             </Link>
             <Link component={RouterLink} to="/search">
-                <ListItem button key="Starred">
-                    <ListItemIcon><AccessibleIcon/></ListItemIcon>
+                <ListItem button key="main">
+                    <ListItemIcon><SearchSharpIcon/></ListItemIcon>
                     <ListItemText primary="Search movies"/>
                 </ListItem>
             </Link>
@@ -59,7 +60,7 @@ export default function ({ handleDrawerClose, open }) {
         <List>
             <Link component={RouterLink} to="/about">
                 <ListItem button key="main">
-                    <ListItemIcon><InboxIcon/></ListItemIcon>
+                    <ListItemIcon><InfoIcon/></ListItemIcon>
                     <ListItemText primary="About"/>
                 </ListItem>
             </Link>
