@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { MovieList } from "../MoviesList/MoviesList";
+import { MoviesList } from "../MoviesList/MoviesList";
 
 export const Movies = () => {
   const [movies, setMovies] = useState([]);
@@ -23,7 +23,7 @@ export const Movies = () => {
 
   return (
     <div className="row">
-      <MovieList movies={movies} />
+      <MoviesList movies={movies} />
     </div>
   );
 };

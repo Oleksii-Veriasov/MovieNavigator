@@ -55,6 +55,12 @@ export default function ({ handleDrawerClose, open }) {
                     <ListItemText primary="Search movies"/>
                 </ListItem>
             </Link>
+            <Link component={RouterLink} to="/movie">
+                <ListItem button key="main">
+                    <ListItemIcon><SearchSharpIcon/></ListItemIcon>
+                    <ListItemText primary="Movie details"/>
+                </ListItem>
+            </Link>
         </List>
         <Divider/>
         <List>

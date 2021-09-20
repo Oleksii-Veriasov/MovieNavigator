@@ -15,7 +15,7 @@ const useStyles = makeStyles((theme) => ({
 //   },
 }));
 
-export const MovieList = (props) => {
+export const MoviesList = (props) => {
   const classes = useStyles();
 
   return (
@@ -25,7 +25,7 @@ export const MovieList = (props) => {
         {props.movies.map((movie, index) => (
           <Grid item xs={12} sm={4}>
             {/* <Paper className={classes.paper}> */}
-              <MoviesItem movie={movie} />
+              <MoviesItem key = {movie.id} movie={movie} />
               {console.log(movie)}
             {/* </Paper> */}
           </Grid>
