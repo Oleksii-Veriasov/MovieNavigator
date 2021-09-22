@@ -5,6 +5,7 @@ import { useStyles } from "./stylesMain";
 import { Movies } from "../components/GetMovies/GetMovies";
 import Search from "../components/SearchComponent/Search";
 import TopNewMoviesPage from "./TopNewMoviesPage";
+import MovieDetailsPage from "./MovieDetailsPage";
 
 // eslint-disable-next-line import/no-anonymous-default-export
 export default function ({ open }) {
@@ -19,8 +20,9 @@ export default function ({ open }) {
       <div className={classes.drawerHeader} />
 
       <Switch>
-        <Route path="/movie">
-          <TopNewMoviesPage />
+        <Route path="/details/:movieId">
+        {/* <Route path="/details/:588228"> */}
+          <MovieDetailsPage />
         </Route>
         <Route path="/about">
           <span>About</span>

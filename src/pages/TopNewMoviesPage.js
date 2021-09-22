@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { getMovies } from "../actions/moviesActions";
 import { MoviesList } from "../components/MoviesList/MoviesList";
+import Loader from "../components/Helpers/Loader"
 
 const TopNewMovies = ({
   movies,
@@ -18,7 +19,7 @@ const TopNewMovies = ({
     <>
       {isError && <div>{errorMessage}</div>}
       {isLoading ? (
-        <div>"Request in process..."</div>
+        <Loader />
       ) : (
         <MoviesList movies={movies} />
       )}

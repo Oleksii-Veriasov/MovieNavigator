@@ -11,10 +11,12 @@ import InfoIcon from '@material-ui/icons/Info';
 import HomeIcon from '@material-ui/icons/Home';
 import ListItemText from "@material-ui/core/ListItemText";
 import SearchSharpIcon from '@material-ui/icons/SearchSharp';
+import CollectionsBookmarkIcon from '@material-ui/icons/CollectionsBookmark';
 import Drawer from "@material-ui/core/Drawer";
 import React from "react";
 import {useStyles} from "./stylesMenu";
 import {useTheme} from "@material-ui/core/styles";
+import { useParams, useHistory } from "react-router-dom";
 
 
 const LinkBehavior = React.forwardRef((props, ref) => (
@@ -26,6 +28,7 @@ const LinkBehavior = React.forwardRef((props, ref) => (
 export default function ({ handleDrawerClose, open }) {
     const classes = useStyles();
     const theme = useTheme();
+    let history = useHistory();
 
     return <Drawer
         className={classes.drawer}
@@ -55,9 +58,11 @@ export default function ({ handleDrawerClose, open }) {
                     <ListItemText primary="Search movies"/>
                 </ListItem>
             </Link>
-            <Link component={RouterLink} to="/movie">
+            <Link component={RouterLink} to={`/details/${history.pop}`}>
+            {/* <Link component={RouterLink} to={`/details/588228`}> */}
+                {/* /details/movieId: */}
                 <ListItem button key="main">
-                    <ListItemIcon><SearchSharpIcon/></ListItemIcon>
+                    <ListItemIcon><CollectionsBookmarkIcon/></ListItemIcon>
                     <ListItemText primary="Movie details"/>
                 </ListItem>
             </Link>
