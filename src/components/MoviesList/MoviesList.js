@@ -21,12 +21,12 @@ export const MoviesList = (props) => {
   return (
     <div className={classes.root}>
       <Grid container spacing={3}>
-        {console.log(props)}
+        {console.log("LIst props "+props)}
         {props.movies.map((movie, index) => (
           <Grid item xs={12} sm={4} key = {movie.id}>
             {/* <Paper className={classes.paper}> */}
               <MoviesItem movie={movie} />
-              {console.log(movie)}
+              {console.log("List movie: "+movie)}
             {/* </Paper> */}
           </Grid>
         ))}

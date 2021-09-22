@@ -1,17 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { useParams, useHistory } from "react-router-dom";
-// import {MoviesItem} from "../components/MoviesItem/MoviesItem";
+
 import { getMovieDetails } from "../actions/moviesActions";
 import Container from "@material-ui/core/Container";
 import Typography from "@material-ui/core/Typography";
-// import { MovieDetail } from "../components/MoviesList/MoviesList";
-// let {movieId}= useParams();
 import Loader from "../components/Helpers/Loader";
 // debugger;
 
 const MovieDetailsPage = ({
-  // movieId,
   getMovieDetails,
   movie,
   credits,
@@ -23,7 +20,11 @@ const MovieDetailsPage = ({
   errorMessage,
 }) => {
   let { movieId } = useParams();
-  // let history = useHistory();
+  let history = useHistory();
+  // history.push(`/details/${movieId}`);
+  if (!movieId) {
+    history.push(`/details/588228`);
+  }
 
   useEffect(() => {
     getMovieDetails(movieId);
@@ -63,7 +64,7 @@ const MovieDetailsPage = ({
 };
 
 const mapStateToProps = (state) => {
-  console.log(state);
+  // console.log(state);
   return {
     movieId: state.movieDetailsReducer.movieId,
     movie: state.movieDetailsReducer.movie,

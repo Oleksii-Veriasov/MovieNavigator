@@ -6,6 +6,7 @@ import { Movies } from "../components/GetMovies/GetMovies";
 import Search from "../components/SearchComponent/Search";
 import TopNewMoviesPage from "./TopNewMoviesPage";
 import MovieDetailsPage from "./MovieDetailsPage";
+import MovieSearchPage from "./SearchPage"
 
 // eslint-disable-next-line import/no-anonymous-default-export
 export default function ({ open }) {
@@ -28,7 +29,7 @@ export default function ({ open }) {
           <span>About</span>
         </Route>
         <Route path="/search">
-          <Search />
+          <MovieSearchPage />
         </Route>
         <Route path="/">
           <TopNewMoviesPage />
