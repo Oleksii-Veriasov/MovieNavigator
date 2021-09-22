@@ -6,8 +6,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import { getMoviesSearchRequest } from "../actions/moviesActions";
-import Loader from "../components/Helpers/Loader";
-debugger;
+import LinearDeterminate from "../components/Helpers/Loader";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -32,13 +31,6 @@ const MovieSearchPage = ({
   const location = useLocation();
   const history = useHistory();
 
-  //   const handleSearchSubmit = (event, query) => {
-  //     event.preventDefault();
-  //     if (query !== "") {
-  //       getMoviesSearchRequest(query);
-  //       return history.push(`/search/${query}`);
-  //     }
-  //   };
   const handleSearchSubmit = (event, query) => {
     event.preventDefault();
     getMoviesSearchRequest(query);
@@ -72,7 +64,7 @@ const MovieSearchPage = ({
         </Button>
       </form>
       {isError && <div>{errorMessage}</div>}
-      {isLoading ? <Loader /> : <MoviesList movies={movies} />}
+      {isLoading ? <LinearDeterminate /> : <MoviesList movies={movies} />}
     </>
   );
 };

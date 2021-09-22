@@ -1,4 +1,4 @@
-import React, { useCallback } from "react";
+import React from "react";
 import clsx from "clsx";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import AppBar from "@material-ui/core/AppBar";
@@ -6,21 +6,20 @@ import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
-import { useHistory, useLocation, Redirect } from "react-router-dom";
+import { useLocation, Redirect } from "react-router-dom";
 import MenuLinks from "./MenuLinks";
-import Button from "@material-ui/core/Button";
 import { useStyles } from "./stylesMenu";
 import MainPages from "../../pages/MainPages";
+import SimpleModal from "../LoginModal/LoginModalComponent";
 
 export default function PersistentDrawerLeft() {
   const classes = useStyles();
   const location = useLocation();
-  const history = useHistory();
   const { pathname, search } = location;
   const query = new URLSearchParams(search);
   const openSearch = query.get("open") === "1";
-  console.log(query.toString());
-  console.log(query, query.get("open"));
+  // console.log(query.toString());
+  // console.log(query, query.get("open"));
   const [open, setOpen] = React.useState(openSearch);
   query.set("open", open ? "1" : "");
 
@@ -57,9 +56,7 @@ export default function PersistentDrawerLeft() {
           <Typography variant="h6" noWrap>
             Movie Navigator
           </Typography>
-          <Button variant="contained" align="right" color="default" type="submit">
-            Login
-          </Button>
+          <SimpleModal />
         </Toolbar>
       </AppBar>
       <MenuLinks handleDrawerClose={handleDrawerClose} open={open} />

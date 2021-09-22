@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { getMovies } from "../actions/moviesActions";
 import { MoviesList } from "../components/MoviesList/MoviesList";
-import Loader from "../components/Helpers/Loader"
+import LinearDeterminate from "../components/Helpers/Loader";
 
 const TopNewMovies = ({
   movies,
@@ -13,16 +13,12 @@ const TopNewMovies = ({
 }) => {
   useEffect(() => {
     getMovies();
-  }, []);
+  }, [getMovies]);
 
   return (
     <>
       {isError && <div>{errorMessage}</div>}
-      {isLoading ? (
-        <Loader />
-      ) : (
-        <MoviesList movies={movies} />
-      )}
+      {isLoading ? <LinearDeterminate /> : <MoviesList movies={movies} />}
     </>
   );
 };

@@ -16,7 +16,7 @@ let initialState = {
       case FETCH_MOVIES_INITIATED:
         return {
           ...state,
-          isLoading: false,
+          isLoading: true,
           };
   
       case FETCH_MOVIES_FAILED:

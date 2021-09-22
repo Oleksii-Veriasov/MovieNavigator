@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { useParams, useHistory } from "react-router-dom";
 
 import { getMovieDetails } from "../actions/moviesActions";
 import Container from "@material-ui/core/Container";
 import Typography from "@material-ui/core/Typography";
-import Loader from "../components/Helpers/Loader";
+import LinearDeterminate from "../components/Helpers/Loader";
 // debugger;
 
 const MovieDetailsPage = ({
@@ -20,21 +20,21 @@ const MovieDetailsPage = ({
   errorMessage,
 }) => {
   let { movieId } = useParams();
-  let history = useHistory();
-  // history.push(`/details/${movieId}`);
+  const history = useHistory();
+
   if (!movieId) {
-    history.push(`/details/588228`);
+    history.push(`/details/{movieId}`);
   }
 
   useEffect(() => {
     getMovieDetails(movieId);
-  }, []);
+  }, [getMovieDetails, movieId]);
 
   return (
     <Container>
       {isError && <div>{errorMessage}</div>}
       {isLoading ? (
-        <Loader />
+        <LinearDeterminate />
       ) : (
         <>
           <div>{movieId}</div>
@@ -42,10 +42,9 @@ const MovieDetailsPage = ({
             component="div"
             movie={movie}
             style={{
-              // backgroundImage: `url(https://image.tmdb.org/t/p/original//yizL4cEKsVvl17Wc1mGEIrQtM2F.jpg)`,
               backgroundImage: `url(https://image.tmdb.org/t/p/original/${movie.backdrop_path})`,
               maxWidth: "100%",
-              height: "400px",
+              height: "600px",
               maxHeight: "100%",
               // margin: "auto",
               backgroundPosition: "center",
@@ -54,7 +53,6 @@ const MovieDetailsPage = ({
               backgroundSize: "cover",
             }}
           >
-            {/* <img src = "https://image.tmdb.org/t/p/w500//yKSNSOwHOeiZv2DxwHAlpiEXBB4.jpg" alt="poster"></img> */}
             {movie.overview}
           </Typography>
         </>

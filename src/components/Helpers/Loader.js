@@ -8,7 +8,7 @@ const useStyles = makeStyles({
   },
 });
 
-export default function Loader() {
+export default function LinearDeterminate() {
   const classes = useStyles();
   const [progress, setProgress] = React.useState(0);
 
