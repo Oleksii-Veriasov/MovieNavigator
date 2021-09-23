@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardActionArea from "@material-ui/core/CardActionArea";
@@ -9,6 +9,7 @@ import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import { useHistory } from "react-router-dom";
 import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
+import FavoriteIcon from "@material-ui/icons/Favorite";
 
 const useStyles = makeStyles({
   root: {
@@ -24,6 +25,7 @@ const useStyles = makeStyles({
 });
 
 export const MoviesItem = (movie, movieId = movie.movie.id) => {
+  const [isFavorite, setFavorite] = useState(false);
   const classes = useStyles();
   // const { path } = useRouteMatch();
   const history = useHistory();
@@ -32,6 +34,9 @@ export const MoviesItem = (movie, movieId = movie.movie.id) => {
     history.push(`/details/${movie.movie.id}`);
   };
 
+  const toggleFavorite = () => {
+    setFavorite(!isFavorite);
+  };
   return (
     <Card className={classes.root}>
       <CardActionArea>
@@ -50,8 +55,8 @@ export const MoviesItem = (movie, movieId = movie.movie.id) => {
         </CardContent>
       </CardActionArea>
       <CardActions>
-        <Button size="small" color="primary">
-          <FavoriteBorderIcon />
+        <Button size="small" color="primary" onClick={toggleFavorite}>
+          {isFavorite ? <FavoriteIcon /> : <FavoriteBorderIcon />}
         </Button>
         <Button onClick={handleRoute} size="small" color="primary">
           Details

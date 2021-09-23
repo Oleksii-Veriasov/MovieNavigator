@@ -52,9 +52,8 @@ const MovieDetailsPage = ({
               // backgroundRepeat: "no-repeat",
               backgroundSize: "cover",
             }}
-          >
-            {movie.overview}
-          </Typography>
+          ></Typography>
+          <Typography component="h3">{movie.overview}</Typography>
         </>
       )}
     </Container>
