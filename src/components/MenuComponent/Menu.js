@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import clsx from "clsx";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import AppBar from "@material-ui/core/AppBar";
@@ -10,7 +10,8 @@ import { useLocation, Redirect } from "react-router-dom";
 import MenuLinks from "./MenuLinks";
 import { useStyles } from "./stylesMenu";
 import MainPages from "../../pages/MainPages";
-import SimpleModal from "../LoginModal/LoginModalComponent";
+import Button from "@material-ui/core/Button";
+import ModalDialog from "../LoginModal/ModalDialog";
 
 export default function PersistentDrawerLeft() {
   const classes = useStyles();
@@ -20,9 +21,18 @@ export default function PersistentDrawerLeft() {
   const openSearch = query.get("open") === "1";
   // console.log(query.toString());
   // console.log(query, query.get("open"));
-  const [open, setOpen] = React.useState(openSearch);
+  const [open, setOpen] = useState(openSearch);
+  const [modalOpen, setModalOpen] = useState(false);
+
   query.set("open", open ? "1" : "");
 
+  const handleModalOpen = () => {
+    setModalOpen(true);
+  };
+
+  const handleModalClose = () => {
+    setModalOpen(false);
+  };
   const handleDrawerOpen = () => {
     setOpen(true);
   };
@@ -56,7 +66,19 @@ export default function PersistentDrawerLeft() {
           <Typography variant="h6" noWrap>
             Movie Navigator
           </Typography>
-          <SimpleModal />
+          <div className={clsx(classes.modal)}>
+            <Button
+              variant="contained"
+              color="secondary"
+              onClick={handleModalOpen}
+            >
+              Signup
+            </Button>
+            <ModalDialog
+              modalOpen={modalOpen}
+              handleModalClose={handleModalClose}
+            />
+          </div>
         </Toolbar>
       </AppBar>
       <MenuLinks handleDrawerClose={handleDrawerClose} open={open} />
